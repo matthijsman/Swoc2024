@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -243,13 +243,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 527049564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ef63e37a2b330349b63139aa4b9acca, type: 3}
+  m_Script: {fileID: 11500000, guid: dc06588edd2bdc4408325504d4a005da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cell: {fileID: 7811286243002909168, guid: 15347c31c4bba9c458c99eff4524c19d, type: 3}
-  Width: 20
-  Length: 20
-  Height: 20
+  Cell: {fileID: 7811286243002909168, guid: cbecf63fd797410478b1eb714eb888f8, type: 3}
+  Width: 0
+  Length: 0
+  Height: 0
   Spacing: 1.1
   PlayerUi: {fileID: 596453575}
 --- !u!4 &527049566
@@ -369,10 +369,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcf3b4f8c6ac4aa498e41cfb7cff1b63, type: 3}
+  m_Script: {fileID: 11500000, guid: 99562773cf8efed42b023a61aec8c981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 100
+  movementSpeed: 10
   fastMovementSpeed: 100
   freeLookSensitivity: 3
   zoomSensitivity: 10
@@ -407,10 +407,9 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: 8efaf705241e3f24e89ccc7904d90e33, type: 2}
+  m_PanelSettings: {fileID: 11400000, guid: b0160f5a2aa82cd4fa54dc061fd55efa, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 7ab0f986e0bc7ac42aaa13d604644fc0,
-    type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: f95b6b7aebd241f47bc9b64dd85b7d99, type: 3}
   m_SortingOrder: 0
 --- !u!4 &596453577
 Transform:
@@ -436,7 +435,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 596453575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0a677fc194287e47a92ab56423469c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 905980c65add6024f81e53c59f7e3347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &661842371
@@ -469,14 +468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &661842373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,9 +480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
 --- !u!4 &661842374
 Transform:
   m_ObjectHideFlags: 0

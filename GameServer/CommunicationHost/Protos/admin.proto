@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package AdminInterface;
+
+// The greeting service definition.
+service AdministrationHost {
+	rpc SetSettings (SettingsRequest) returns (EmptyRequest) {};
+	rpc StartGame (EmptyRequest) returns (EmptyRequest) {};
+	rpc StopGame (EmptyRequest) returns (EmptyRequest) {};
+}
+
+message SettingsRequest {
+	repeated int32 dimensions = 1;
+	bool debugMode = 2;
+}
+
+message EmptyRequest { }

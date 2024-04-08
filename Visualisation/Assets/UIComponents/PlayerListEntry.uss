@@ -1,0 +1,6 @@
+.player-list-entry {
+    -unity-font: url('project://database/Library/unity%20default%20resources?fileID=10102&guid=0000000000000000e000000000000000&type=0#LegacyRuntime');
+    -unity-font-style: normal;
+    color: rgb(56, 56, 56);
+    font-size: 14px;
+}

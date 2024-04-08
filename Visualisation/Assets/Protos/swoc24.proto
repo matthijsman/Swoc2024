@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package GameHost;
+
+// The greeting service definition.
+service CommunicationHost {
+	rpc Register (RegisterRequest) returns (GameSettings) {};
+	rpc Subscribe (SubsribeRequest) returns (stream GameUpdateMessage) {};
+}
+
+message GameSettings {
+	int32 nrDimensions = 1;
+	int32 sideLengths = 2;
+	repeated int32 startAddress = 3;
+}
+
+message Move {
+	string playerName = 1;
+	string snakeName = 2;
+	repeated int32 nextLocation = 3;
+}
+
+message GameUpdateMessage {
+	repeated UpdatedCell updatedCells = 1;
+}
+
+message UpdatedCell {
+	repeated int32 address = 1;
+	string player = 2;
+	int32 foodValue = 3;
+}
+
+message RegisterRequest {
+	string playerName = 1;
+}
+
+message SubsribeRequest {
+	string playerName = 1; 
+}
+
+message EmptyRequest { }

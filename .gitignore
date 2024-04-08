@@ -1,7 +1,19 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
+/Visualisation/[Ll]ibrary/
+/Visualisation/[Tt]emp/
+/Visualisation/[Oo]utput/
+/Visualisation/[Oo]bj/
+/Visualisation/[Bb]uild/
+/Visualisation/[Bb]uilds/
+/Visualisation/[Ll]ogs/
+/Visualisation/[Uu]ser[Ss]ettings/
 **/.vs
 **/obj
 **/bin
+/Visualisation/Assets/Packages
+/Visualisation/Packages
+/Visualisation/ProjectSettings
+*.vsconfig
+*.meta

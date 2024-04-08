@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIComponents/PlayerListEntry.uss?fileID=7433441132597879392&amp;guid=053dc5654add985448f15d73f7cc9882&amp;type=3#PlayerListEntry" />
+    <ui:VisualElement style="flex-grow: 1; height: 25px; width: auto; align-items: flex-start; justify-content: flex-start; flex-direction: row;">
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lbl_PlayerName" class="player-list-entry" style="width: 80px; flex-direction: row;" />
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lbl_PlayerSnakes" class="player-list-entry" style="width: 60px; flex-direction: row;" />
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lbl_PlayerScore" class="player-list-entry" style="width: 141px; flex-direction: row;" />
+    </ui:VisualElement>
+</ui:UXML>

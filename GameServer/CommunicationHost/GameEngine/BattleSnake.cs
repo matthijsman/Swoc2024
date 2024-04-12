@@ -18,6 +18,7 @@ namespace CommunicationHost.GameEngine
         private int[] _sideLengths;
         private bool _gameRunning;
         private Tick _tick;
+        private SemaphoreSlim _moveLock = new SemaphoreSlim(1);
 
         public async Task Initialise(int[] sideLengths)
         {
@@ -114,15 +115,17 @@ namespace CommunicationHost.GameEngine
                 Score = 0
             }).ToList());
             initialUpdateMessage.UpdatedCells.AddRange(updatedCells);
+            _tick = new Tick(_map);
+
             var disconnectedPlayers = SendUpdates(initialUpdateMessage);
             
             GameUpdateMessage message = null;
             while (_gameRunning)
             {
-                _tick = new Tick(_map);
                 await Task.Delay(1000);
-                await _tick.ProcessMoves(_players, disconnectedPlayers);
+                await DoLocked(async () => await _tick.ProcessMoves(_players, disconnectedPlayers));
                 message = _tick.GetMessage();
+                _tick = new Tick(_map);
                 disconnectedPlayers = SendUpdates(message);
                 var remainingFoods = _map.GetRemainingFoods();
                 Console.WriteLine($"Number of food remaining: {remainingFoods}");
@@ -187,13 +190,27 @@ namespace CommunicationHost.GameEngine
 
         internal async Task RegisterPlayerMove(Move move)
         {
-            await _tick.RegisterPlayerMove(move);
+            await DoLocked(() => _tick.RegisterPlayerMove(move));
         }
 
 
         internal async Task RegisterSnakeSplit(SplitRequest split)
         {
-           await _tick.RegisterPlayerSplit(split);
+           await DoLocked( () => _tick.RegisterPlayerSplit(split));
+        }
+
+        private async Task DoLocked(Action act)
+        {
+            await _moveLock.WaitAsync();
+            try
+            {
+                act();
+            }
+            finally
+            {
+                _moveLock.Release();
+            }
+
         }
     }
 }

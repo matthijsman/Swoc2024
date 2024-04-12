@@ -9,7 +9,6 @@ namespace CommunicationHost.Model
         private GameUpdateMessage _updateMessage { get; set; }
         private List<Move> _moves { get; set; }
         private List<SplitRequest> _splits { get; set; }
-        private SemaphoreSlim _moveLock = new SemaphoreSlim(1);
         private readonly Map _map;
 
         public Tick(Map map)
@@ -27,52 +26,26 @@ namespace CommunicationHost.Model
 
         public async Task<GameUpdateMessage> ProcessMoves(List<Player> players, List<string> disconnectedPlayers)
         {
-            await _moveLock.WaitAsync();
-            try
-            {
-                await Console.Out.WriteLineAsync($"processing {_moves.Count} moves");
-                HandleDisconnectedPlayers(players, disconnectedPlayers);
-                HandleSplits(players);
-                HandleIllegalMoves(players);
-                HandleHomeComing(players);
-                HandleCollisions(players);
-                HandleMoves(players);
-                HandlePlayerScores(players);
-                await Console.Out.WriteLineAsync($"Current Tick results in {_updateMessage.UpdatedCells.Count} updates");
-                return _updateMessage;
-            }
-            finally
-            {
-                _moveLock.Release();
-            }
+            await Console.Out.WriteLineAsync($"processing {_moves.Count} moves");
+            HandleDisconnectedPlayers(players, disconnectedPlayers);
+            HandleSplits(players);
+            HandleIllegalMoves(players);
+            HandleHomeComing(players);
+            HandleCollisions(players);
+            HandleMoves(players);
+            HandlePlayerScores(players);
+            await Console.Out.WriteLineAsync($"Current Tick results in {_updateMessage.UpdatedCells.Count} updates");
+            return _updateMessage;
         }
 
-        public async Task RegisterPlayerMove(Move move)
+        public void RegisterPlayerMove(Move move)
         {
-            await _moveLock.WaitAsync();
-            try
-            {
-               _moves.Add(move);
-            }
-            finally
-            {
-                _moveLock.Release();
-            }
-
+            _moves.Add(move);
         }
 
-        public async Task RegisterPlayerSplit(SplitRequest split) 
+        public void RegisterPlayerSplit(SplitRequest split) 
         {
-            await _moveLock.WaitAsync();
-            try
-            {
-                _splits.Add(split);
-            }
-            finally
-            {
-                _moveLock.Release();
-            }
-
+            _splits.Add(split);
         }
 
         private void HandleDisconnectedPlayers(List<Player> players, List<string> disconnectedPlayers)
